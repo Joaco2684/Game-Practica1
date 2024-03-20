@@ -1,6 +1,24 @@
 import random
 
-
+def difFacil(guessed_letters, secret_word): 
+    vocales="aeiou"
+    for letter in secret_word:
+        if letter in vocales:
+            guessed_letters.append(letter)
+        else:
+            guessed_letters.append("_")
+    return "".join(guessed_letters) #Retorna String mostrando las vocales por defecto
+            
+def difMedia(guessed_letters, secret_word):
+    for indice,letter in enumerate(secret_word): #indice contiene la pos actual en la que estoy iterando
+        if indice==0: #Primer letra
+            guessed_letters.append(letter)
+        elif (indice==len(secret_word)-1): #Última letra
+            guessed_letters.append(letter)
+        else:
+            guessed_letters.append('_')
+    return "".join(guessed_letters) #Retorna String mostrando la primer y ultima letra
+            
 # Lista de palabras posibles
 words = ["python", "programación", "computadora", "código", "desarrollo","inteligencia"]
 
@@ -16,14 +34,15 @@ print("""1. Fácil
 3. Difícil""")
 
 dif = int(input("Ingrese la dificultad en la que quiere jugar(1,2,3):"))
-while not dif in range(1,4): #Comprueba que se ingrese una dificulat valida
+while not dif in range(1,4): #Comprueba que se ingrese una dificultad valida
     dif = int(input("Ingrese la dificultad en la que quiere jugar(1,2,3):"))
 
 print("¡Bienvenido al juego de adivinanzas! | NIVEL:", "Fácil" if dif==1 else "Media" if dif==2 else "Difícil")
 print("Estoy pensando en una palabra. ¿Puedes adivinar cuál es?")
 print(f"Tienes solo {max_fails} fallos permitidos!!")
 
-word_displayed = "_" * len(secret_word)
+
+word_displayed = difFacil(guessed_letters,secret_word) if dif==1 else difMedia(guessed_letters,secret_word) if dif==2 else ("_"*len(secret_word))
 # Mostrarla palabra parcialmente adivinada
 print(f"Palabra: {word_displayed}")
 
