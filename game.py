@@ -54,6 +54,7 @@ while fails < max_fails:
     #Detecta como error el string "" (no se inserto ninguna letra)
     if letter == "":
         print('Ingrese una letra valida.')
+        fails+=1
         continue
     
     # Verificar si la letra ya ha sido adivinada
