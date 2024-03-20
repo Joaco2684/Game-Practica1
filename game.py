@@ -1,4 +1,6 @@
 import random
+
+
 # Lista de palabras posibles
 words = ["python", "programación", "computadora", "código", "desarrollo","inteligencia"]
 
@@ -9,7 +11,15 @@ max_fails = 3
 # Lista para almacenar las letras adivinadas
 guessed_letters = []
 
-print("¡Bienvenido al juego de adivinanzas!")
+print("""1. Fácil
+2. Media
+3. Difícil""")
+
+dif = int(input("Ingrese la dificultad en la que quiere jugar(1,2,3):"))
+while not dif in range(1,4): #Comprueba que se ingrese una dificulat valida
+    dif = int(input("Ingrese la dificultad en la que quiere jugar(1,2,3):"))
+
+print("¡Bienvenido al juego de adivinanzas! | NIVEL:", "Fácil" if dif==1 else "Media" if dif==2 else "Difícil")
 print("Estoy pensando en una palabra. ¿Puedes adivinar cuál es?")
 print(f"Tienes solo {max_fails} fallos permitidos!!")
 
